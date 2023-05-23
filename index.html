@@ -21,6 +21,7 @@ slider.oninput = function() {
             //inside callback function , it is the best practice while developing widgets
             JFCustomWidget.subscribe("ready", function(){
                 var label = JFCustomWidget.getWidgetSetting('QuestionLabel');
+                var label = JFCustomWidget.getWidgetSetting('QuestionLabel1');
                 document.getElementById('labelText').innerHTML = label;
                 //subscribe to form submit event
                 JFCustomWidget.subscribe("submit", function(){
