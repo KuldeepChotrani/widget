@@ -11,29 +11,29 @@
             <p>Value: <span id="demo"></span></p>
           </div>
         <script type="text/javascript">
-            var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
+          const CustomWidget = () => {
+  const firstLabelText = JFCustomWidget.getWidgetSetting('firstLabel');
+  const secondLabelText = JFCustomWidget.getWidgetSetting('secondLabel');
+  const thirdLabelText = JFCustomWidget.getWidgetSetting('thirdLabel');
 
-slider.oninput = function() {
-  output.innerHTML = this.value;}
-            //always subscribe to ready event and implement widget related code
-            //inside callback function , it is the best practice while developing widgets
-            JFCustomWidget.subscribe("ready", function(){
-                var label = JFCustomWidget.getWidgetSetting('QuestionLabel');
-                var label1 = JFCustomWidget.getWidgetSetting('QuestionLabel1');
-                document.getElementById('labelText').innerHTML = label;
-                //subscribe to form submit event
-                JFCustomWidget.subscribe("submit", function(){
-                    var msg = {
-                        //you should valid attribute to data for JotForm
-                        //to be able to use youw widget as required
-                        valid: true,
-                        value: document.getElementById('userInput').value
-                    }
-                    // send value to JotForm
-                    JFCustomWidget.sendSubmit(msg);
-                });
-            });
+  const widgetContainer = document.createElement('div');
+  const firstLabel = document.createElement('div');
+  const secondLabel = document.createElement('div');
+  const thirdLabel = document.createElement('div');
+
+  firstLabel.textContent = firstLabelText;
+  secondLabel.textContent = secondLabelText;
+  thirdLabel.textContent = thirdLabelText;
+
+  widgetContainer.appendChild(firstLabel);
+  widgetContainer.appendChild(secondLabel);
+  widgetContainer.appendChild(thirdLabel);
+
+  // Append the widget container to the DOM or a specific element
+  document.body.appendChild(widgetContainer);
+};
+
+CustomWidget();
+
         </script>
     </body>
